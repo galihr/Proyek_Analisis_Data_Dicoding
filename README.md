@@ -1,8 +1,8 @@
-# Submission Proyek Analisis Data - Air Quality✨
+# Submission Proyek Analisis Data - Bike Sharing Analysis🚲
 
 ## Setup Environment - Anaconda
 ```
-conda create --name main-ds python=3.9
+conda create --name main-ds python=3.10
 conda activate main-ds
 pip install -r requirements.txt
 ```
@@ -18,5 +18,5 @@ pip install -r requirements.txt
 
 ## Run steamlit app
 ```
-streamlit run dashboard.py
+streamlit run dashboard/dashboard.py
 ```

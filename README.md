@@ -1,6 +1,7 @@
 # Submission Proyek Analisis Data - Bike Sharing Analysis🚲
 
 ## Setup Environment - Anaconda
+
 ```
 conda create --name main-ds python=3.10
 conda activate main-ds
@@ -8,6 +9,7 @@ pip install -r requirements.txt
 ```
 
 ## Setup Environment - Shell/Terminal
+
 ```
 mkdir proyek_analisis_data
 cd proyek_analisis_data

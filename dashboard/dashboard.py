@@ -6,7 +6,7 @@ import streamlit as st
 sns.set(style="dark")
 
 # Load cleaned data
-all_df = pd.read_csv("main_data.csv")
+all_df = pd.read_csv("dashboard/main_data.csv")
 
 # Kolom yang dikonversi menjadi datetime
 all_df["dteday"] = pd.to_datetime(all_df["dteday"])
@@ -38,7 +38,7 @@ max_date = all_df["dteday"].max()
 
 with st.sidebar:
     # Menambahkan logo perusahaan
-    st.image("bike_sharing_logo.jpg")
+    st.image("dashboard/bike_sharing_logo.jpg")
 
     # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(

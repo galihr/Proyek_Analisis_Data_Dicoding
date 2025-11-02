@@ -58,25 +58,23 @@ main_df = all_df[
 st.header("Bike Sharing Analysis Dashboard:bike:")
 
 # SUBHEADER 1
-st.subheader("Tren Peminjaman Sepeda Tahun 2012")
-
-df_2012 = main_df[main_df["year"] == 2012]
+st.subheader("Tren Peminjaman Sepeda Tahun")
 
 fig, ax = plt.subplots(figsize=(12, 5))
-ax.plot(df_2012["dteday"], df_2012["cnt"])
-ax.set_title("Tren Harian Peminjaman Sepeda Tahun 2012")
+ax.plot(main_df["dteday"], main_df["cnt"])
+ax.set_title("Tren Harian Peminjaman Sepeda")
 ax.set_xlabel("Tanggal")
 ax.set_ylabel("Jumlah Peminjaman (cnt)")
 st.pyplot(fig)
 
 # SUBHEADER 2
-st.subheader("Rata-rata Peminjaman Sepeda per Bulan (2012)")
+st.subheader("Rata-rata Peminjaman Sepeda per Bulan")
 
-monthly_avg = df_2012.groupby("month_name")["cnt"].mean().reindex(month_map.values())
+monthly_avg = main_df.groupby("month_name")["cnt"].mean().reindex(month_map.values())
 
 fig, ax = plt.subplots(figsize=(12, 5))
 ax.bar(monthly_avg.index, monthly_avg.values)
-ax.set_title("Rata-rata Peminjaman Sepeda per Bulan Tahun 2012")
+ax.set_title("Rata-rata Peminjaman Sepeda per Bulan")
 ax.set_xlabel("Bulan")
 ax.set_ylabel("Rata-rata Peminjaman (cnt)")
 plt.xticks(rotation=45)

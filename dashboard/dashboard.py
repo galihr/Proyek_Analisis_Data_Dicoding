@@ -85,15 +85,13 @@ st.pyplot(fig)
 # SUBHEADER 3
 st.subheader("Perbandingan Total Pengguna Casual vs Registered")
 
-st.caption(f"Periode data: **{start_date}** sampai **{end_date}**")
-
 total_casual = main_df["casual"].sum()
 total_registered = main_df["registered"].sum()
 
 fig, ax = plt.subplots(figsize=(6, 5))
 ax.bar(["Casual", "Registered"], [total_casual, total_registered])
 ax.set_ylabel("Total Peminjaman")
-ax.set_title("Perbandingan Pengguna Casual vs Registered (Filtered)")
+ax.set_title("Perbandingan Pengguna Casual vs Registered")
 st.pyplot(fig)
 
 

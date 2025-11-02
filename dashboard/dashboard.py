@@ -60,12 +60,10 @@ st.header("Bike Sharing Analysis Dashboard:bike:")
 # SUBHEADER 1
 st.subheader("Tren Peminjaman Sepeda Tahun 2012")
 
+df_2012 = main_df[main_df["year"] == 2012]
+
 fig, ax = plt.subplots(figsize=(12, 5))
-ax.plot(
-    all_df[all_df["year"] == 2012]["dteday"],
-    all_df[all_df["year"] == 2012]["cnt"],
-    color="blue",
-)
+ax.plot(df_2012["dteday"], df_2012["cnt"])
 ax.set_title("Tren Harian Peminjaman Sepeda Tahun 2012")
 ax.set_xlabel("Tanggal")
 ax.set_ylabel("Jumlah Peminjaman (cnt)")
@@ -74,17 +72,11 @@ st.pyplot(fig)
 # SUBHEADER 2
 st.subheader("Rata-rata Peminjaman Sepeda per Bulan (2012)")
 
-# Hitung rata-rata
-monthly_avg = (
-    all_df[all_df["year"] == 2012]
-    .groupby("month_name")["cnt"]
-    .mean()
-    .reindex(month_map.values())
-)
+monthly_avg = df_2012.groupby("month_name")["cnt"].mean().reindex(month_map.values())
 
 fig, ax = plt.subplots(figsize=(12, 5))
-ax.bar(monthly_avg.index, monthly_avg.values, color="skyblue")
-ax.set_title("Rata-rata Peminjaman Sepeda per Bulan (2012)")
+ax.bar(monthly_avg.index, monthly_avg.values)
+ax.set_title("Rata-rata Peminjaman Sepeda per Bulan Tahun 2012")
 ax.set_xlabel("Bulan")
 ax.set_ylabel("Rata-rata Peminjaman (cnt)")
 plt.xticks(rotation=45)
@@ -93,24 +85,23 @@ st.pyplot(fig)
 # SUBHEADER 3
 st.subheader("Perbandingan Total Pengguna Casual vs Registered")
 
+st.caption(f"Periode data: **{start_date}** sampai **{end_date}**")
+
 total_casual = main_df["casual"].sum()
 total_registered = main_df["registered"].sum()
 
 fig, ax = plt.subplots(figsize=(6, 5))
-ax.bar(
-    ["Casual", "Registered"],
-    [total_casual, total_registered],
-    color=["orange", "green"],
-)
+ax.bar(["Casual", "Registered"], [total_casual, total_registered])
 ax.set_ylabel("Total Peminjaman")
-ax.set_title("Perbandingan Pengguna Casual vs Registered")
+ax.set_title("Perbandingan Pengguna Casual vs Registered (Filtered)")
 st.pyplot(fig)
+
 
 # SUBHEADER 4
 st.subheader("Scatter Plot Hubungan Suhu (temp) dengan Peminjaman Sepeda")
 
 fig, ax = plt.subplots(figsize=(8, 5))
-ax.scatter(main_df["temp"], main_df["cnt"], alpha=0.6, color="red")
+ax.scatter(main_df["temp"], main_df["cnt"], alpha=0.6)
 ax.set_xlabel("Suhu (Normalized)")
 ax.set_ylabel("Jumlah Peminjaman (cnt)")
 ax.set_title("Hubungan Suhu dengan Peminjaman Sepeda")
